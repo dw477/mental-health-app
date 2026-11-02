@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5ef">
+  <title>A moment to breathe · Coursework prototype</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/static/style.css">
+  <script type="module" src="/static/app.js"></script>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="A moment to breathe, home"><span class="brand-symbol" aria-hidden="true">◌</span> a moment to breathe</a>
+      <button class="safety-button" @click="openResources"><span aria-hidden="true">＋</span> Crisis resources</button>
+    </header>
+    <main>
+      <div class="prototype-label"><span class="status-dot"></span> Coursework prototype · fictional use only</div>
+      <nav class="view-nav" aria-label="Main">
+        <button :aria-current="screen === 'breathe' ? 'page' : null" @click="navigate('breathe')">Breathe</button>
+        <button :aria-current="screen === 'ask' ? 'page' : null" @click="navigate('ask')">Ask about this exercise</button>
+        <button :aria-current="screen === 'history' ? 'page' : null" @click="navigate('history')">History</button>
+      </nav>
+
+      <section v-if="screen === 'breathe'" aria-labelledby="breathing-heading">
+        <div class="intro"><p class="eyebrow">ONE EXERCISE, AT YOUR PACE</p><h1 id="breathing-heading">A little room to breathe.</h1><p>Inhale for 4 seconds. Exhale for 6.<br>Six cycles, one minute. You can stop whenever you choose.</p></div>
+        <div v-if="loadError" class="notice error" role="alert">{{ loadError }} <button @click="initialize">Retry</button></div>
+        <div class="exercise-card">
+          <div class="card-top"><span>PACED BREATHING</span><span>{{ active ? 'Cycle ' + cue.cycle + ' of 6' : '4 in · 6 out' }}</span></div>
+          <div class="breathing-space">
+            <div class="orbit orbit-outer"></div><div class="orbit orbit-inner"></div>
+            <div class="breath-circle" :class="{ running: active }">
+              <div class="circle-copy">
+                <template v-if="active"><span class="cue-label" aria-live="polite" aria-atomic="true">{{ cue.phase }}</span><strong aria-hidden="true">{{ cue.phaseSeconds }}</strong><span class="circle-caption">seconds</span></template>
+                <template v-else><span class="leaf-mark" aria-hidden="true">⌁</span><span class="cue-label">{{ outcome === 'completed' ? 'One minute, complete.' : outcome ? 'You can leave it here.' : 'Begin when you’re ready.' }}</span><span class="circle-caption">{{ outcome ? 'No next step required.' : 'A breath at a time.' }}</span></template>
+              </div>
+            </div>
+          </div>
+          <div v-if="active" class="exercise-progress"><div class="progress-track" role="progressbar" aria-label="Exercise progress" :aria-valuenow="Math.floor(cue.progress)" aria-valuemin="0" aria-valuemax="100"><div :style="{ width: cue.progress + '%' }"></div></div><span>{{ cue.remaining }}s remaining</span></div>
+          <div v-else class="exercise-duration"><span class="tiny-clock" aria-hidden="true">◷</span> {{ outcome ? (elapsed / 1000).toFixed(2) + ' seconds elapsed' : '60 seconds · no setup required' }}</div>
+          <button v-if="active" class="primary-button stop-button" @click="finish('stopped')">Stop exercise</button>
+          <button v-else class="primary-button" :disabled="!skill" @click="start">{{ outcome ? 'Start again' : 'Start' }} <span aria-hidden="true">→</span></button>
+          <p class="permission">{{ active ? 'Stopping early is always an option.' : 'There’s nothing to get right.' }}</p>
+        </div>
+        <p v-if="outcome" class="session-message" role="status">{{ outcome === 'completed' ? 'Exercise finished.' : outcome === 'interrupted' ? 'Exercise stopped because this page was hidden.' : 'Exercise stopped.' }} Your session is saved when the local server is available.</p>
+        <div class="below-card"><span aria-hidden="true">↗</span><p>Questions can wait.<br><button class="text-button" @click="navigate('ask')">Ask about this exercise whenever you choose.</button></p></div>
+      </section>
+
+      <section v-if="screen === 'ask'" class="secondary-view" aria-labelledby="ask-heading">
+        <p class="eyebrow">OPTIONAL INFORMATION</p><h1 id="ask-heading">A question, if you have one.</h1>
+        <p>The model can explain the fixed exercise. You choose whether to use it.</p>
+        <form class="panel question-form" @submit.prevent="ask">
+          <label for="question">Ask about this exercise</label>
+          <textarea id="question" v-model="question" required maxlength="1000" rows="4" placeholder="Fictional scenario: Sam asks how long the exercise takes." :disabled="sending" aria-describedby="question-privacy"></textarea>
+          <p id="question-privacy" class="small-text">Use fictional questions only. Questions go to Google Gemini and are saved with replies on this computer.</p>
+          <button class="primary-button" :disabled="sending || !question.trim()">{{ sending ? 'Waiting for a reply…' : 'Ask question' }} <span aria-hidden="true">→</span></button>
+          <p v-if="config?.model_mode !== 'live'" class="mode-note">Demonstration mode · {{ config?.model_mode }} · no live model call</p>
+        </form>
+        <div v-if="sending" role="status" class="notice">You can open Crisis resources or return to the exercise while you wait.</div>
+        <div v-if="questionError || answer?.status === 'failed'" class="notice error" role="alert">{{ questionError || answer.error }} <p>The breathing exercise and Crisis resources are still available.</p></div>
+        <article v-if="answer?.reply" class="panel answer" aria-live="polite"><p class="eyebrow">{{ answer.status === 'crisis' ? 'LOCAL SAFETY RESPONSE' : modeLabel }}</p><p>{{ answer.reply }}</p><button v-if="answer.status === 'crisis'" class="text-button" @click="openResources">Open Crisis resources</button></article>
+        <p class="small-text">This prototype provides no diagnosis, therapy, or clinical monitoring.</p>
+      </section>
+
+      <section v-if="screen === 'history'" class="secondary-view" aria-labelledby="history-heading">
+        <div class="history-heading"><div><p class="eyebrow">SAVED ON THIS COMPUTER</p><h1 id="history-heading">Your session history.</h1></div><button class="subtle-button" @click="loadHistory">Refresh</button></div>
+        <p>Exercise records and fictional questions, kept in a local SQLite database.</p>
+        <div v-if="historyError" class="notice error" role="alert">{{ historyError }}</div>
+        <h2>Breathing sessions <span class="count">{{ history.sessions.length }}</span></h2>
+        <p v-if="!history.sessions.length" class="empty-state">Start a session to see it here. Stopping early is recorded too.</p>
+        <article v-for="record in history.sessions" :key="record.id" class="history-item">
+          <div><h3>Paced breathing</h3><p>{{ formatDate(record.started_at) }}</p></div><span class="record-status">{{ record.status === 'active' ? 'Started · finish unconfirmed' : record.status }}</span>
+          <p class="record-detail">Exercise {{ (record.elapsed_ms / 1000).toFixed(2) }}s · intended 60s · entry/setup {{ (record.setup_ms / 1000).toFixed(2) }}s</p>
+        </article>
+        <h2>Questions <span class="count">{{ history.conversations.length }}</span></h2>
+        <p v-if="!history.conversations.length" class="empty-state">Questions are optional. Any saved conversations will appear here.</p>
+        <article v-for="record in history.conversations" :key="record.id" class="history-item conversation">
+          <div class="conversation-meta"><span>{{ formatDate(record.created_at) }}</span><span>{{ record.source }} · {{ record.status }}</span></div>
+          <h3>{{ record.question }}</h3><p class="saved-reply">{{ record.reply || record.error || 'No finished reply was recorded.' }}</p>
+        </article>
+      </section>
+      <div v-if="saveError" class="notice error" role="alert">{{ saveError }} <button class="text-button" @click="flushSessions">Retry saving</button></div>
+    </main>
+    <footer><span>A coursework skills prototype.</span><span>No diagnosis, therapy, or monitoring. Test with fictional scenarios only.</span></footer>
+
+    <dialog ref="resources" aria-labelledby="crisis-heading" @cancel.prevent="closeResources">
+      <div class="dialog-heading"><p class="eyebrow">AVAILABLE AT ANY TIME</p><button class="close-button" aria-label="Close crisis resources" @click="closeResources">×</button></div>
+      <h2 id="crisis-heading">Crisis resources</h2>
+      <p>This prototype cannot provide crisis care. No one is monitoring this app.</p>
+      <div class="resource-block"><h3>United States and territories</h3><p>988 Suicide &amp; Crisis Lifeline</p><div class="resource-links"><a href="tel:988?oai_link_source=model_response_hotline">Call 988</a><a href="sms:988?oai_link_source=model_response_hotline">Text 988</a><a href="https://988lifeline.org/chat/?oai_link_source=model_response_hotline" target="_blank" rel="noopener">Online chat ↗</a></div></div>
+      <p>If there is immediate danger, contact your local emergency services. Outside the United States, use your local crisis or emergency service.</p>
+      <p class="small-text">This information is stored in the app and opens even when a model request or the server fails. Calling, texting, and online chat require their respective services.</p>
+      <button class="primary-button" @click="closeResources">Return to the app</button>
+    </dialog>
+  </div>
+  <noscript>This app needs JavaScript for the exercise. For crisis support in the United States, call or text 988. In immediate danger, contact local emergency services.</noscript>
+</body>
+</html>

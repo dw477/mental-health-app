@@ -1,0 +1,7 @@
+{
+  "name": "Paced breathing",
+  "inhale_seconds": 4,
+  "exhale_seconds": 6,
+  "cycles": 6,
+  "duration_seconds": 60
+}
