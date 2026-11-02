@@ -24,6 +24,8 @@ Crisis information is embedded in the static interface. It opens without a model
 
 Browser observations were made in Chrome on November 2, 2026. The exercise requires no typed response. Timing starts with the first rendered inhale instruction and ends when the final planned exhale finishes. It includes browser scheduling delays. Setup measures time at the ready interface before starting, including user deliberation. It excludes the exercise itself. Opening crisis resources ends the current session, so time in the dialog adds no exercise time.
 
+Video demonstrations: [Complete-session demonstration](https://github.com/dw477/mental-health-app/blob/main/reports/part2/video_demo_complete_session.mp4), [test-evidence demonstration](https://github.com/dw477/mental-health-app/blob/main/reports/part2/video_demo_test_evidence.mp4).
+
 | Fictional scenario or check | Expected and observed result |
 |---|---|
 | Finish six cycles | Expected about 60 seconds and a completed record. The first run measured 60.039 seconds, with 2.393 seconds of setup. [Completion](https://github.com/dw477/mental-health-app/blob/main/reports/part2/evidence/completed.png) |
