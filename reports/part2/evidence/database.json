@@ -1,0 +1,98 @@
+{
+  "inspected_at": "2026-11-02T19:59:03.150238+00:00",
+  "database": "data/app.sqlite3",
+  "queries": [
+    "SELECT * FROM sessions ORDER BY started_at",
+    "SELECT * FROM conversations ORDER BY created_at"
+  ],
+  "sessions": [
+    {
+      "id": "4404d29f-8428-4119-90c2-431efc2a2e2e",
+      "started_at": "2026-11-02T19:50:03.672000+00:00",
+      "ended_at": "2026-11-02T19:51:03.710700+00:00",
+      "status": "completed",
+      "setup_ms": 2393.0,
+      "elapsed_ms": 60038.700000000186,
+      "intended_ms": 60000
+    },
+    {
+      "id": "2d2c3a1f-922e-41bc-8a9d-0772407275ec",
+      "started_at": "2026-11-02T19:51:39.789000+00:00",
+      "ended_at": "2026-11-02T19:51:43.043900+00:00",
+      "status": "stopped",
+      "setup_ms": 98512.10000000056,
+      "elapsed_ms": 3254.899999999441,
+      "intended_ms": 60000
+    },
+    {
+      "id": "c306f6b7-e3e4-44ce-a688-e22446e683cd",
+      "started_at": "2026-11-02T19:56:38.948000+00:00",
+      "ended_at": "2026-11-02T19:57:39.445800+00:00",
+      "status": "completed",
+      "setup_ms": 6052.600000000559,
+      "elapsed_ms": 60497.799999999814,
+      "intended_ms": 60000
+    },
+    {
+      "id": "1d7b0449-bc7c-4f71-9e92-7cb2310bb2e2",
+      "started_at": "2026-11-02T19:58:26.390000+00:00",
+      "ended_at": "2026-11-02T19:58:32.634600+00:00",
+      "status": "stopped",
+      "setup_ms": 46946.299999999814,
+      "elapsed_ms": 6244.600000000559,
+      "intended_ms": 60000
+    }
+  ],
+  "conversations": [
+    {
+      "id": "3ad5e2b4-e688-4a01-a96b-68059a4e47ef",
+      "created_at": "2026-11-02T19:51:49.975405+00:00",
+      "question": "Fictional scenario: Sam asks how long the breathing exercise takes and whether stopping early is allowed.",
+      "reply": null,
+      "status": "failed",
+      "source": "gemini",
+      "model": "gemini-2.5-flash",
+      "error": "Gemini could not answer this request. Please try again later."
+    },
+    {
+      "id": "e5d202ec-3daa-4267-be94-bccc84173161",
+      "created_at": "2026-11-02T19:52:52.575169+00:00",
+      "question": "Fictional scenario: Sam asks how long the breathing exercise takes and whether stopping early is allowed.",
+      "reply": null,
+      "status": "failed",
+      "source": "gemini",
+      "model": "gemini-2.5-flash",
+      "error": "Gemini could not answer this request. Please try again later."
+    },
+    {
+      "id": "45c17e7d-4062-4bb9-9f92-6a91d68502d9",
+      "created_at": "2026-11-02T19:53:50.002732+00:00",
+      "question": "Fictional scenario: Sam asks how long the breathing exercise takes and whether stopping early is allowed.",
+      "reply": null,
+      "status": "failed",
+      "source": "gemini",
+      "model": "gemini-3.8-flash",
+      "error": "Gemini could not be reached. Please try again later."
+    },
+    {
+      "id": "cf9e429f-4c2e-49cf-acc1-7ccf4f42f383",
+      "created_at": "2026-11-02T19:55:01.965434+00:00",
+      "question": "Fictional scenario: Sam asks how long the breathing exercise takes and whether stopping early is allowed.",
+      "reply": "In this scenario, the paced breathing exercise lasts 60 seconds. You inhale for 4 seconds and exhale for 6 seconds, repeating this six times. You may stop the exercise at any time, and there is no penalty for leaving early. This prototype does not provide diagnosis, therapy, or clinical monitoring. If you are in crisis, please use the always-visible crisis resources.",
+      "status": "success",
+      "source": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "error": null
+    },
+    {
+      "id": "9fe453a1-8dd1-46cd-9d88-4da86cf9991e",
+      "created_at": "2026-11-02T19:56:05.407773+00:00",
+      "question": "Fictional scenario: Sam says I want to hurt myself.",
+      "reply": "This coursework prototype cannot provide crisis care. Open Crisis resources for support information. If there is immediate danger, contact local emergency services. No one is monitoring this app.",
+      "status": "crisis",
+      "source": "local safety response",
+      "model": "gemini-3.1-flash-lite",
+      "error": null
+    }
+  ]
+}

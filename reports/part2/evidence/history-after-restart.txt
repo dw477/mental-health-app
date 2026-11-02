@@ -1,0 +1,67 @@
+Browser tab: 820689594, Title: "A moment to breathe · Coursework prototype", URL: "http://127.0.0.1:8000/".
+1 AXWebArea A moment to breathe · Coursework prototype, URL: 127.0.0.1:8000/
+	2 container app
+		3 container
+			4 link Description: A moment to breathe, home, Value: 127.0.0.1:8000/
+			5 button Crisis resources
+		6 container
+			7 text Coursework prototype · fictional use only
+			8 container Main
+				9 button Breathe
+				10 button Ask about this exercise
+				11 button History
+			31 container Your session history.
+				32 text SAVED ON THIS COMPUTER
+				33 heading Your session history., Value: 1, ID: history-heading
+					34 text Your session history.
+				35 button Refresh
+				36 text Exercise records and fictional questions, kept in a local SQLite database.
+				37 heading Breathing sessions 4, Value: 2
+					38 text Breathing sessions  4
+				39 container
+					40 heading Paced breathing, Value: 3
+						41 text Paced breathing
+					42 text Nov 2, 2026, 2:58 PM Stopped Exercise 6.24s · intended 60s · entry/setup 46.95s
+				43 container
+					44 heading Paced breathing, Value: 3
+						45 text Paced breathing
+					46 text Nov 2, 2026, 2:56 PM Completed Exercise 60.50s · intended 60s · entry/setup 6.05s
+				47 container
+					48 heading Paced breathing, Value: 3
+						49 text Paced breathing
+					50 text Nov 2, 2026, 2:51 PM Stopped Exercise 3.25s · intended 60s · entry/setup 98.51s
+				51 container
+					52 heading Paced breathing, Value: 3
+						53 text Paced breathing
+					54 text Nov 2, 2026, 2:50 PM Completed Exercise 60.04s · intended 60s · entry/setup 2.39s
+				55 heading Questions 5, Value: 2
+					56 text Questions  5
+				57 container
+					58 text Nov 2, 2026, 2:56 PM local safety response · crisis
+					59 heading Fictional scenario: Sam says I want to hurt myself., Value: 3
+						60 text Fictional scenario: Sam says I want to hurt myself.
+					61 text This coursework prototype cannot provide crisis care. Open Crisis resources for support information. If there is immediate danger, contact local emergency services. No one is monitoring this app.
+				62 container
+					63 text Nov 2, 2026, 2:55 PM gemini · success
+					64 heading Value: 3, Fictional scenario: Sam asks how long the breathing exercise takes and whether stopping early is allowed.
+						65 text Fictional scenario: Sam asks how long the breathing exercise takes and whether stopping early is allowed.
+					66 text In this scenario, the paced breathing exercise lasts 60 seconds. You inhale for 4 seconds and exhale for 6 seconds, repeating this six times. You may stop the exercise at any time, and there is no penalty for leaving early. This prototype does not provide diagnosis, therapy, or clinical monitoring. If you are in crisis, please use the always-visible crisis resources.
+				67 container
+					68 text Nov 2, 2026, 2:53 PM gemini · failed
+					69 heading Value: 3, Fictional scenario: Sam asks how long the breathing exercise takes and whether stopping early is allowed.
+						70 text Fictional scenario: Sam asks how long the breathing exercise takes and whether stopping early is allowed.
+					71 text Gemini could not be reached. Please try again later.
+				72 container
+					73 text Nov 2, 2026, 2:52 PM gemini · failed
+					74 heading Value: 3, Fictional scenario: Sam asks how long the breathing exercise takes and whether stopping early is allowed.
+						75 text Fictional scenario: Sam asks how long the breathing exercise takes and whether stopping early is allowed.
+					76 text Gemini could not answer this request. Please try again later.
+				77 container
+					78 text Nov 2, 2026, 2:51 PM gemini · failed
+					79 heading Value: 3, Fictional scenario: Sam asks how long the breathing exercise takes and whether stopping early is allowed.
+						80 text Fictional scenario: Sam asks how long the breathing exercise takes and whether stopping early is allowed.
+					81 text Gemini could not answer this request. Please try again later.
+		29 container
+			30 text A coursework skills prototype. No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+The focused UI element is 11 button History
