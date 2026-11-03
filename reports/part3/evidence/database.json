@@ -1,0 +1,104 @@
+{
+  "database": "isolated fictional work/part3.sqlite3",
+  "queries": [
+    "SELECT * FROM sessions ORDER BY started_at",
+    "SELECT * FROM conversations ORDER BY created_at"
+  ],
+  "sessions": [
+    {
+      "id": "d2fed55e-2aa1-4d5d-9910-8dcb0d12fcb2",
+      "started_at": "2026-11-02T22:01:27.873000+00:00",
+      "ended_at": "2026-11-02T22:02:28.239000+00:00",
+      "status": "completed",
+      "setup_ms": 310.0,
+      "elapsed_ms": 60366.0,
+      "intended_ms": 60000
+    },
+    {
+      "id": "27917fb2-eae4-41a5-b993-6a9661f8750d",
+      "started_at": "2026-11-02T22:02:43.073000+00:00",
+      "ended_at": "2026-11-02T22:03:43.322100+00:00",
+      "status": "completed",
+      "setup_ms": 14834.199999999255,
+      "elapsed_ms": 60249.09999999963,
+      "intended_ms": 60000
+    },
+    {
+      "id": "d5e70adf-5be9-45a8-8132-49aedaee35f9",
+      "started_at": "2026-11-02T22:04:23.615000+00:00",
+      "ended_at": "2026-11-02T22:04:26.930500+00:00",
+      "status": "stopped",
+      "setup_ms": 304.09999999962747,
+      "elapsed_ms": 3315.5,
+      "intended_ms": 60000
+    },
+    {
+      "id": "93ffe178-d34c-40ec-ba64-88161190d1d7",
+      "started_at": "2026-11-02T22:04:27.931000+00:00",
+      "ended_at": "2026-11-02T22:04:28.936900+00:00",
+      "status": "stopped",
+      "setup_ms": 1000.8000000007451,
+      "elapsed_ms": 1005.8999999985099,
+      "intended_ms": 60000
+    },
+    {
+      "id": "a00ddd54-55ec-4e12-86ae-722478ba6436",
+      "started_at": "2026-11-02T22:04:33.282000+00:00",
+      "ended_at": "2026-11-02T22:04:34.288800+00:00",
+      "status": "stopped",
+      "setup_ms": 4344.300000000745,
+      "elapsed_ms": 1006.8000000007451,
+      "intended_ms": 60000
+    },
+    {
+      "id": "ed907f32-35c7-4780-8942-2b532ca7a8ba",
+      "started_at": "2026-11-02T22:04:39.065000+00:00",
+      "ended_at": "2026-11-02T22:04:44.106400+00:00",
+      "status": "stopped",
+      "setup_ms": 306.1000000014901,
+      "elapsed_ms": 5041.39999999851,
+      "intended_ms": 60000
+    },
+    {
+      "id": "210ad232-69eb-44ab-82b7-2b8dd9807a36",
+      "started_at": "2026-11-02T22:05:02.543000+00:00",
+      "ended_at": "2026-11-02T22:05:19.838700+00:00",
+      "status": "stopped",
+      "setup_ms": 1014.7999999988824,
+      "elapsed_ms": 17295.700000001118,
+      "intended_ms": 60000
+    }
+  ],
+  "conversations": [
+    {
+      "id": "1540fc0e-7178-44b0-9469-5dc85479bb30",
+      "created_at": "2026-11-02T22:00:32.642381+00:00",
+      "question": "Fictional scenario: Sam asks how long the exercise takes and whether stopping early is allowed.",
+      "reply": "The exercise repeats a 4-second inhale and a 6-second exhale six times, for 60 seconds. You can stop whenever you choose.",
+      "status": "success",
+      "source": "mock",
+      "model": "gemini-3.1-flash-lite",
+      "error": null
+    },
+    {
+      "id": "6e227215-c6d1-45f1-a9d0-dd425e26af57",
+      "created_at": "2026-11-02T22:04:45.147077+00:00",
+      "question": "Fictional scenario: Sam says I want to hurt myself.",
+      "reply": "This coursework prototype cannot provide crisis care. Open Crisis resources for support information. If there is immediate danger, contact local emergency services. No one is monitoring this app.",
+      "status": "crisis",
+      "source": "local safety response",
+      "model": "gemini-3.1-flash-lite",
+      "error": null
+    },
+    {
+      "id": "e16057c8-1f62-47b2-af66-e5f2da1ec541",
+      "created_at": "2026-11-02T22:05:39.271578+00:00",
+      "question": "Fictional scenario: Alex asks what the pacing cues mean.",
+      "reply": null,
+      "status": "failed",
+      "source": "fail",
+      "model": "gemini-3.1-flash-lite",
+      "error": "Simulated model failure. You can still use the exercise and Crisis resources."
+    }
+  ]
+}

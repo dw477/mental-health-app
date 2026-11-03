@@ -1,0 +1,16 @@
+✔ four-second inhale, six-second exhale at every cycle boundary (0.6212ms)
+✔ completion uses elapsed time even after delayed frames (0.1039ms)
+✔ first visit offers no saved answer (4.2835ms)
+✔ reopening skips newer failed, pending, crisis and empty records and preserves draft (2.2892ms)
+✔ newest success replaces an older success on a subsequent visit (0.9682ms)
+✔ history failure does not block navigation, and reopening is unavailable (0.6743ms)
+✔ reopening is disabled while a fresh request is pending (0.5386ms)
+✔ hiding the page interrupts an active exercise and queues a terminal record (6.2851ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 79.141

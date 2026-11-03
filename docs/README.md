@@ -1,6 +1,6 @@
 # A moment to breathe
 
-A localhost coursework prototype for Assignment 3, Part 2. Vue 3 provides a single paced-breathing exercise, FastAPI serves the interface and API, and SQLite stores exercise sessions and fictional questions. Use fictional scenarios only. This prototype provides no diagnosis, therapy, crisis care, monitoring, or claim of clinical benefit.
+A localhost coursework prototype for Assignment 3, Part 3. Vue 3 provides a single paced-breathing exercise, FastAPI serves the interface and API, and SQLite stores exercise sessions and fictional questions. Use fictional scenarios only. This prototype provides no diagnosis, therapy, crisis care, monitoring, or claim of clinical benefit.
 
 ## Run on Windows
 
@@ -11,7 +11,14 @@ python -m venv .venv
 ./.venv/Scripts/python.exe -m pip install -r requirements.txt
 ```
 
-Copy `.env.example` to `.env` if `.env` does not already exist, then edit it locally and enter your Gemini key. `.env` and the database are excluded from Git. The server also accepts the process environment variable `GEMINI_API_KEY`, or `GOOGLE_API_KEY` as a fallback. `GEMINI_API_KEY` takes precedence in this app.
+For a clean checkout without a key, run the following and open [the app](http://127.0.0.1:8000). Mock answers are labeled and no model service is called.
+
+```powershell
+$env:MODEL_MODE = 'mock'
+./.venv/Scripts/python.exe -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
+```
+
+For live replies, copy `.env.example` to `.env` if `.env` does not already exist, then edit it locally and enter your Gemini key. `.env` and the database are excluded from Git. The server also accepts the process environment variable `GEMINI_API_KEY`, or `GOOGLE_API_KEY` as a fallback. `GEMINI_API_KEY` takes precedence in this app.
 
 ```dotenv
 GEMINI_API_KEY=your-key-here
@@ -19,9 +26,10 @@ GEMINI_MODEL=gemini-3.1-flash-lite
 MODEL_MODE=live
 ```
 
-Start the server, then open [the app](http://127.0.0.1:8000).
+Stop the mock server with Ctrl+C and remove the process override before starting live mode. Then open [the app](http://127.0.0.1:8000).
 
 ```powershell
+Remove-Item Env:MODEL_MODE -ErrorAction SilentlyContinue
 ./.venv/Scripts/python.exe -m uvicorn backend.app:app --host 127.0.0.1 --port 8000
 ```
 
@@ -35,7 +43,8 @@ For predictable demonstrations without paid calls, use `MODEL_MODE=mock`. Replie
 - The elapsed timer uses `performance.now()`, deriving each cue from elapsed time rather than accumulating timer ticks. Setup is measured from the ready interface to the first rendered instruction. History reports setup and actual exercise time separately. Completion can be slightly over 60 seconds because of the browser frame schedule. Reduced motion disables expansion while retaining the text and countdown.
 - `data/app.sqlite3` contains `sessions` with start/end, outcome, setup, actual and intended duration, and `conversations` with question, reply, status, source, model and generic failure information. The app saves pending and failed questions too. It sends only the fictional question and fixed exercise context to Gemini. Keys stay on the server.
 - Requests have UUIDs. Terminal exercise outcomes cannot be replaced by a late start or repeated finish. A small localStorage outbox retries unsaved session records. A saved start with no finish is shown as **Started · finish unconfirmed**. Abrupt process/device loss can prevent a final event from reaching storage. A pending model request interrupted by server shutdown remains visibly unfinished.
-- History reads SQLite, so it survives browser and server restarts. It is a simple record review for this milestone. Automatic personalization is deferred.
+- History reads SQLite, so it survives browser and server restarts. On the question screen, **Reopen my last answer** retrieves the latest successful, nonempty reply from history. It shows the original question, saved date and source without a new question or model call. New question drafts are retained. Failed, pending and local crisis replies do not become the shortcut. A history failure hides the shortcut and offers Retry history; asking a new question and Crisis resources remain available. Reopening a previously loaded reply does not require another request.
+- This is lightweight personalization from existing use (D5), offered as a choice (R4), with no profile or configuration form (D3). It does not infer distress, change the breathing sequence or establish that a saved model answer is correct. History belongs to this single local database, not an authenticated person.
 
 ## Safety decisions
 
@@ -49,10 +58,18 @@ The Python checks use temporary SQLite databases and mocked HTTP responses. They
 
 ```powershell
 ./.venv/Scripts/python.exe -m unittest discover -s tests -v
-node --test tests/exercise.test.mjs
+node --test tests/exercise.test.mjs tests/saved-answer.test.mjs
 ```
 
-Browser evidence, database inspection and the live-model outcome are documented in [the Part 2 report](reports/part2/report.md). The original [Part 1 design](reports/part1/report.md) and diagram are preserved. Part 2 changes the default to 60 seconds and defers the questionnaire, anxiety scoring, profile collection, configurable duration and personalization.
+The [Part 3 report](reports/part3/report.md) links fifteen scenarios, three behavior checks, clean-checkout evidence, four separate live observations, and a captioned demonstration/process recording. The [Part 2 report](reports/part2/report.md) retains the earlier evidence. The original [Part 1 design](reports/part1/report.md) and diagram are preserved. The implementation uses a fixed 60 seconds and defers the questionnaire, anxiety scoring, profile collection and configurable duration.
+
+The live observation script is opt-in and makes exactly four calls using the configured key. It writes only fictional prompts, replies and generic outcomes to `reports/part3/evidence/live-model.json`, with a separate ignored database under `work/`. It is never run by unittest discovery:
+
+```powershell
+./.venv/Scripts/python.exe tests/observe_live.py --run-four-calls
+```
+
+Peer testing uses mocks by default. If live calls are needed, the host caps the session at 50 calls and returns to mocks at that limit. The submitted observation used four calls.
 
 The API is documented at [localhost /docs](http://127.0.0.1:8000/docs). It provides `GET /api/status`, `POST /api/sessions/{uuid}`, `POST /api/questions` and `GET /api/history`. This is a single-user local prototype with no accounts or access control. Use fictional data on a trusted computer.
 

@@ -1,0 +1,769 @@
+Chrome observations of fictional scenarios only. Labels identify attempted steps; the recorded DOM is the observed outcome. In particular, attempted tab hiding did not interrupt the exercise.
+
+--- Reopened mock answer after server restart; original Sam question and Alex draft (2026-11-02T22:01:27.536Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A question, if you have one.":
+    - paragraph: OPTIONAL INFORMATION
+    - heading "A question, if you have one." [level=1]
+    - paragraph: The model can explain the fixed exercise. You choose whether to use it.
+    - paragraph: SAVED ON THIS COMPUTER
+    - paragraph: You can revisit your latest answer or ask something new below.
+    - button "Reopen my last answer" [active]
+    - paragraph: Shows a saved reply without a new model request.
+    - generic: Ask about this exercise
+    - textbox "Ask about this exercise":
+      - /placeholder: "Fictional scenario: Sam asks how long the exercise takes."
+      - text: "Fictional draft: Alex asks about the pacing cues."
+    - paragraph: Use fictional questions only. Questions go to Google Gemini and are saved with replies on this computer.
+    - button "Ask question":
+      - text: Ask question
+      - generic: →
+    - paragraph: Demonstration mode · mock · no live model call
+    - article:
+      - paragraph: Mock reply · demonstration only
+      - paragraph: Saved answer · Nov 2, 2026, 5:00 PM
+      - 'heading "Fictional scenario: Sam asks how long the exercise takes and whether stopping early is allowed." [level=2]'
+      - paragraph: The exercise repeats a 4-second inhale and a 6-second exhale six times, for 60 seconds. You can stop whenever you choose.
+    - paragraph: This prototype provides no diagnosis, therapy, or clinical monitoring.
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Full exercise result (2026-11-02T22:02:39.123Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A little room to breathe.":
+    - paragraph: ONE EXERCISE, AT YOUR PACE
+    - heading "A little room to breathe." [level=1]
+    - paragraph:
+      - text: Inhale for 4 seconds. Exhale for 6.
+      - text: Six cycles, one minute. You can stop whenever you choose.
+    - generic: PACED BREATHING
+    - generic: 4 in · 6 out
+    - generic: ⌁
+    - generic: One minute, complete.
+    - generic: No next step required.
+    - generic: ◷
+    - text: 60.37 seconds elapsed
+    - button "Start again":
+      - text: Start again
+      - generic: →
+    - paragraph: There’s nothing to get right.
+    - status: Exercise finished. Your session is saved when the local server is available.
+    - generic: ↗
+    - paragraph:
+      - text: Questions can wait.
+      - button "Ask about this exercise whenever you choose."
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Recorded complete exercise (2026-11-02T22:03:58.100Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A little room to breathe.":
+    - paragraph: ONE EXERCISE, AT YOUR PACE
+    - heading "A little room to breathe." [level=1]
+    - paragraph:
+      - text: Inhale for 4 seconds. Exhale for 6.
+      - text: Six cycles, one minute. You can stop whenever you choose.
+    - generic: PACED BREATHING
+    - generic: 4 in · 6 out
+    - generic: ⌁
+    - generic: One minute, complete.
+    - generic: No next step required.
+    - generic: ◷
+    - text: 60.25 seconds elapsed
+    - button "Start again":
+      - text: Start again
+      - generic: →
+    - paragraph: There’s nothing to get right.
+    - status: Exercise finished. Your session is saved when the local server is available.
+    - generic: ↗
+    - paragraph:
+      - text: Questions can wait.
+      - button "Ask about this exercise whenever you choose."
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Early Stop (2026-11-02T22:04:26.945Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A little room to breathe.":
+    - paragraph: ONE EXERCISE, AT YOUR PACE
+    - heading "A little room to breathe." [level=1]
+    - paragraph:
+      - text: Inhale for 4 seconds. Exhale for 6.
+      - text: Six cycles, one minute. You can stop whenever you choose.
+    - generic: PACED BREATHING
+    - generic: 4 in · 6 out
+    - generic: ⌁
+    - generic: You can leave it here.
+    - generic: No next step required.
+    - generic: ◷
+    - text: 3.32 seconds elapsed
+    - button "Start again":
+      - text: Start again
+      - generic: →
+    - paragraph: There’s nothing to get right.
+    - status: Exercise stopped. Your session is saved when the local server is available.
+    - generic: ↗
+    - paragraph:
+      - text: Questions can wait.
+      - button "Ask about this exercise whenever you choose."
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Crisis opened from active exercise; session stopped (2026-11-02T22:04:28.963Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A little room to breathe.":
+    - paragraph: ONE EXERCISE, AT YOUR PACE
+    - heading "A little room to breathe." [level=1]
+    - paragraph:
+      - text: Inhale for 4 seconds. Exhale for 6.
+      - text: Six cycles, one minute. You can stop whenever you choose.
+    - generic: PACED BREATHING
+    - generic: 4 in · 6 out
+    - generic: ⌁
+    - generic: You can leave it here.
+    - generic: No next step required.
+    - generic: ◷
+    - text: 1.01 seconds elapsed
+    - button "Start again":
+      - text: Start again
+      - generic: →
+    - paragraph: There’s nothing to get right.
+    - status: Exercise stopped. Your session is saved when the local server is available.
+    - generic: ↗
+    - paragraph:
+      - text: Questions can wait.
+      - button "Ask about this exercise whenever you choose."
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+- dialog "Crisis resources":
+  - paragraph: AVAILABLE AT ANY TIME
+  - button "Close crisis resources" [active]: ×
+  - heading "Crisis resources" [level=2]
+  - paragraph: This prototype cannot provide crisis care. No one is monitoring this app.
+  - heading "United States and territories" [level=3]
+  - paragraph: 988 Suicide & Crisis Lifeline
+  - link "Call 988":
+    - /url: tel:988?oai_link_source=model_response_hotline
+  - link "Text 988":
+    - /url: sms:988?oai_link_source=model_response_hotline
+  - link "Online chat ↗":
+    - /url: https://988lifeline.org/chat/?oai_link_source=model_response_hotline
+  - paragraph: If there is immediate danger, contact your local emergency services. Outside the United States, use your local crisis or emergency service.
+  - paragraph: This information is stored in the app and opens even when a model request or the server fails. Calling, texting, and online chat require their respective services.
+  - button "Return to the app"
+
+--- Navigation from active exercise (2026-11-02T22:04:34.303Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise" [active]
+    - button "History"
+  - region "A question, if you have one.":
+    - paragraph: OPTIONAL INFORMATION
+    - heading "A question, if you have one." [level=1]
+    - paragraph: The model can explain the fixed exercise. You choose whether to use it.
+    - generic: Ask about this exercise
+    - textbox "Ask about this exercise":
+      - /placeholder: "Fictional scenario: Sam asks how long the exercise takes."
+      - text: "Fictional draft: Alex asks about the pacing cues."
+    - paragraph: Use fictional questions only. Questions go to Google Gemini and are saved with replies on this computer.
+    - button "Ask question":
+      - text: Ask question
+      - generic: →
+    - paragraph: Demonstration mode · mock · no live model call
+    - article:
+      - paragraph: Mock reply · demonstration only
+      - paragraph: Saved answer · Nov 2, 2026, 5:00 PM
+      - 'heading "Fictional scenario: Sam asks how long the exercise takes and whether stopping early is allowed." [level=2]'
+      - paragraph: The exercise repeats a 4-second inhale and a 6-second exhale six times, for 60 seconds. You can stop whenever you choose.
+    - paragraph: This prototype provides no diagnosis, therapy, or clinical monitoring.
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Attempted browser tab hide: page remained active (2026-11-02T22:04:44.026Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A little room to breathe.":
+    - paragraph: ONE EXERCISE, AT YOUR PACE
+    - heading "A little room to breathe." [level=1]
+    - paragraph:
+      - text: Inhale for 4 seconds. Exhale for 6.
+      - text: Six cycles, one minute. You can stop whenever you choose.
+    - generic: PACED BREATHING
+    - generic: Cycle 1 of 6
+    - generic: Exhale
+    - strong: "6"
+    - generic: seconds
+    - progressbar "Exercise progress"
+    - generic: 56s remaining
+    - button "Stop exercise"
+    - paragraph: Stopping early is always an option.
+    - generic: ↗
+    - paragraph:
+      - text: Questions can wait.
+      - button "Ask about this exercise whenever you choose."
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Local crisis keyword response using fictional input (2026-11-02T22:04:45.179Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A question, if you have one.":
+    - paragraph: OPTIONAL INFORMATION
+    - heading "A question, if you have one." [level=1]
+    - paragraph: The model can explain the fixed exercise. You choose whether to use it.
+    - paragraph: SAVED ON THIS COMPUTER
+    - paragraph: You can revisit your latest answer or ask something new below.
+    - button "Reopen my last answer" [disabled]
+    - paragraph: Shows a saved reply without a new model request.
+    - generic: Ask about this exercise
+    - textbox "Ask about this exercise" [disabled]:
+      - /placeholder: "Fictional scenario: Sam asks how long the exercise takes."
+      - text: "Fictional scenario: Sam says I want to hurt myself."
+    - paragraph: Use fictional questions only. Questions go to Google Gemini and are saved with replies on this computer.
+    - button "Waiting for a reply…" [disabled] [active]:
+      - text: Waiting for a reply…
+      - generic: →
+    - paragraph: Demonstration mode · mock · no live model call
+    - status: You can open Crisis resources or return to the exercise while you wait.
+    - paragraph: This prototype provides no diagnosis, therapy, or clinical monitoring.
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Finished fixed local crisis reply (2026-11-02T22:05:01.235Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A question, if you have one.":
+    - paragraph: OPTIONAL INFORMATION
+    - heading "A question, if you have one." [level=1]
+    - paragraph: The model can explain the fixed exercise. You choose whether to use it.
+    - paragraph: SAVED ON THIS COMPUTER
+    - paragraph: You can revisit your latest answer or ask something new below.
+    - button "Reopen my last answer"
+    - paragraph: Shows a saved reply without a new model request.
+    - generic: Ask about this exercise
+    - textbox "Ask about this exercise":
+      - /placeholder: "Fictional scenario: Sam asks how long the exercise takes."
+      - text: "Fictional scenario: Sam says I want to hurt myself."
+    - paragraph: Use fictional questions only. Questions go to Google Gemini and are saved with replies on this computer.
+    - button "Ask question":
+      - text: Ask question
+      - generic: →
+    - paragraph: Demonstration mode · mock · no live model call
+    - article:
+      - paragraph: LOCAL SAFETY RESPONSE
+      - paragraph: This coursework prototype cannot provide crisis care. Open Crisis resources for support information. If there is immediate danger, contact local emergency services. No one is monitoring this app.
+      - button "Open Crisis resources"
+    - paragraph: This prototype provides no diagnosis, therapy, or clinical monitoring.
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Local crisis reply does not replace latest ordinary answer (2026-11-02T22:05:01.509Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A question, if you have one.":
+    - paragraph: OPTIONAL INFORMATION
+    - heading "A question, if you have one." [level=1]
+    - paragraph: The model can explain the fixed exercise. You choose whether to use it.
+    - paragraph: SAVED ON THIS COMPUTER
+    - paragraph: You can revisit your latest answer or ask something new below.
+    - button "Reopen my last answer" [active]
+    - paragraph: Shows a saved reply without a new model request.
+    - generic: Ask about this exercise
+    - textbox "Ask about this exercise":
+      - /placeholder: "Fictional scenario: Sam asks how long the exercise takes."
+      - text: "Fictional scenario: Sam says I want to hurt myself."
+    - paragraph: Use fictional questions only. Questions go to Google Gemini and are saved with replies on this computer.
+    - button "Ask question":
+      - text: Ask question
+      - generic: →
+    - paragraph: Demonstration mode · mock · no live model call
+    - article:
+      - paragraph: Mock reply · demonstration only
+      - paragraph: Saved answer · Nov 2, 2026, 5:00 PM
+      - 'heading "Fictional scenario: Sam asks how long the exercise takes and whether stopping early is allowed." [level=2]'
+      - paragraph: The exercise repeats a 4-second inhale and a 6-second exhale six times, for 60 seconds. You can stop whenever you choose.
+    - paragraph: This prototype provides no diagnosis, therapy, or clinical monitoring.
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Attempted keyboard tab switch: page remained active (2026-11-02T22:05:05.274Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A little room to breathe.":
+    - paragraph: ONE EXERCISE, AT YOUR PACE
+    - heading "A little room to breathe." [level=1]
+    - paragraph:
+      - text: Inhale for 4 seconds. Exhale for 6.
+      - text: Six cycles, one minute. You can stop whenever you choose.
+    - generic: PACED BREATHING
+    - generic: Cycle 1 of 6
+    - generic: Inhale
+    - strong: "2"
+    - generic: seconds
+    - progressbar "Exercise progress"
+    - generic: 58s remaining
+    - button "Stop exercise"
+    - paragraph: Stopping early is always an option.
+    - generic: ↗
+    - paragraph:
+      - text: Questions can wait.
+      - button "Ask about this exercise whenever you choose."
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Deliberate model failure (2026-11-02T22:05:43.229Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A question, if you have one.":
+    - paragraph: OPTIONAL INFORMATION
+    - heading "A question, if you have one." [level=1]
+    - paragraph: The model can explain the fixed exercise. You choose whether to use it.
+    - paragraph: SAVED ON THIS COMPUTER
+    - paragraph: You can revisit your latest answer or ask something new below.
+    - button "Reopen my last answer"
+    - paragraph: Shows a saved reply without a new model request.
+    - generic: Ask about this exercise
+    - textbox "Ask about this exercise":
+      - /placeholder: "Fictional scenario: Sam asks how long the exercise takes."
+      - text: "Fictional scenario: Alex asks what the pacing cues mean."
+    - paragraph: Use fictional questions only. Questions go to Google Gemini and are saved with replies on this computer.
+    - button "Ask question":
+      - text: Ask question
+      - generic: →
+    - paragraph: Demonstration mode · fail · no live model call
+    - alert:
+      - text: Simulated model failure. You can still use the exercise and Crisis resources.
+      - paragraph: The breathing exercise and Crisis resources are still available.
+    - paragraph: This prototype provides no diagnosis, therapy, or clinical monitoring.
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Crisis resources after model failure (2026-11-02T22:05:47.498Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A question, if you have one.":
+    - paragraph: OPTIONAL INFORMATION
+    - heading "A question, if you have one." [level=1]
+    - paragraph: The model can explain the fixed exercise. You choose whether to use it.
+    - paragraph: SAVED ON THIS COMPUTER
+    - paragraph: You can revisit your latest answer or ask something new below.
+    - button "Reopen my last answer"
+    - paragraph: Shows a saved reply without a new model request.
+    - generic: Ask about this exercise
+    - textbox "Ask about this exercise":
+      - /placeholder: "Fictional scenario: Sam asks how long the exercise takes."
+      - text: "Fictional scenario: Alex asks what the pacing cues mean."
+    - paragraph: Use fictional questions only. Questions go to Google Gemini and are saved with replies on this computer.
+    - button "Ask question":
+      - text: Ask question
+      - generic: →
+    - paragraph: Demonstration mode · fail · no live model call
+    - alert:
+      - text: Simulated model failure. You can still use the exercise and Crisis resources.
+      - paragraph: The breathing exercise and Crisis resources are still available.
+    - paragraph: This prototype provides no diagnosis, therapy, or clinical monitoring.
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+- dialog "Crisis resources":
+  - paragraph: AVAILABLE AT ANY TIME
+  - button "Close crisis resources" [active]: ×
+  - heading "Crisis resources" [level=2]
+  - paragraph: This prototype cannot provide crisis care. No one is monitoring this app.
+  - heading "United States and territories" [level=3]
+  - paragraph: 988 Suicide & Crisis Lifeline
+  - link "Call 988":
+    - /url: tel:988?oai_link_source=model_response_hotline
+  - link "Text 988":
+    - /url: sms:988?oai_link_source=model_response_hotline
+  - link "Online chat ↗":
+    - /url: https://988lifeline.org/chat/?oai_link_source=model_response_hotline
+  - paragraph: If there is immediate danger, contact your local emergency services. Outside the United States, use your local crisis or emergency service.
+  - paragraph: This information is stored in the app and opens even when a model request or the server fails. Calling, texting, and online chat require their respective services.
+  - button "Return to the app"
+
+--- Failed and crisis records skipped; mock answer source retained in fail mode (2026-11-02T22:06:24.304Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A question, if you have one.":
+    - paragraph: OPTIONAL INFORMATION
+    - heading "A question, if you have one." [level=1]
+    - paragraph: The model can explain the fixed exercise. You choose whether to use it.
+    - paragraph: SAVED ON THIS COMPUTER
+    - paragraph: You can revisit your latest answer or ask something new below.
+    - button "Reopen my last answer" [active]
+    - paragraph: Shows a saved reply without a new model request.
+    - generic: Ask about this exercise
+    - textbox "Ask about this exercise":
+      - /placeholder: "Fictional scenario: Sam asks how long the exercise takes."
+      - text: "Fictional scenario: Alex asks what the pacing cues mean."
+    - paragraph: Use fictional questions only. Questions go to Google Gemini and are saved with replies on this computer.
+    - button "Ask question":
+      - text: Ask question
+      - generic: →
+    - paragraph: Demonstration mode · fail · no live model call
+    - article:
+      - paragraph: Mock reply · demonstration only
+      - paragraph: Saved answer · Nov 2, 2026, 5:00 PM
+      - 'heading "Fictional scenario: Sam asks how long the exercise takes and whether stopping early is allowed." [level=2]'
+      - paragraph: The exercise repeats a 4-second inhale and a 6-second exhale six times, for 60 seconds. You can stop whenever you choose.
+    - paragraph: This prototype provides no diagnosis, therapy, or clinical monitoring.
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Server stopped; history unavailable but question form available (2026-11-02T22:06:42.705Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise" [active]
+    - button "History"
+  - region "A question, if you have one.":
+    - paragraph: OPTIONAL INFORMATION
+    - heading "A question, if you have one." [level=1]
+    - paragraph: The model can explain the fixed exercise. You choose whether to use it.
+    - generic: Ask about this exercise
+    - textbox "Ask about this exercise":
+      - /placeholder: "Fictional scenario: Sam asks how long the exercise takes."
+      - text: "Fictional scenario: Alex asks what the pacing cues mean."
+    - paragraph: Use fictional questions only. Questions go to Google Gemini and are saved with replies on this computer.
+    - button "Ask question":
+      - text: Ask question
+      - generic: →
+    - paragraph: Demonstration mode · fail · no live model call
+    - article:
+      - paragraph: Mock reply · demonstration only
+      - paragraph: Saved answer · Nov 2, 2026, 5:00 PM
+      - 'heading "Fictional scenario: Sam asks how long the exercise takes and whether stopping early is allowed." [level=2]'
+      - paragraph: The exercise repeats a 4-second inhale and a 6-second exhale six times, for 60 seconds. You can stop whenever you choose.
+    - paragraph: This prototype provides no diagnosis, therapy, or clinical monitoring.
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Crisis resources opens with server stopped (2026-11-02T22:06:42.985Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A question, if you have one.":
+    - paragraph: OPTIONAL INFORMATION
+    - heading "A question, if you have one." [level=1]
+    - paragraph: The model can explain the fixed exercise. You choose whether to use it.
+    - generic: Ask about this exercise
+    - textbox "Ask about this exercise":
+      - /placeholder: "Fictional scenario: Sam asks how long the exercise takes."
+      - text: "Fictional scenario: Alex asks what the pacing cues mean."
+    - paragraph: Use fictional questions only. Questions go to Google Gemini and are saved with replies on this computer.
+    - button "Ask question":
+      - text: Ask question
+      - generic: →
+    - paragraph: Demonstration mode · fail · no live model call
+    - article:
+      - paragraph: Mock reply · demonstration only
+      - paragraph: Saved answer · Nov 2, 2026, 5:00 PM
+      - 'heading "Fictional scenario: Sam asks how long the exercise takes and whether stopping early is allowed." [level=2]'
+      - paragraph: The exercise repeats a 4-second inhale and a 6-second exhale six times, for 60 seconds. You can stop whenever you choose.
+    - paragraph: This prototype provides no diagnosis, therapy, or clinical monitoring.
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+- dialog "Crisis resources":
+  - paragraph: AVAILABLE AT ANY TIME
+  - button "Close crisis resources" [active]: ×
+  - heading "Crisis resources" [level=2]
+  - paragraph: This prototype cannot provide crisis care. No one is monitoring this app.
+  - heading "United States and territories" [level=3]
+  - paragraph: 988 Suicide & Crisis Lifeline
+  - link "Call 988":
+    - /url: tel:988?oai_link_source=model_response_hotline
+  - link "Text 988":
+    - /url: sms:988?oai_link_source=model_response_hotline
+  - link "Online chat ↗":
+    - /url: https://988lifeline.org/chat/?oai_link_source=model_response_hotline
+  - paragraph: If there is immediate danger, contact your local emergency services. Outside the United States, use your local crisis or emergency service.
+  - paragraph: This information is stored in the app and opens even when a model request or the server fails. Calling, texting, and online chat require their respective services.
+  - button "Return to the app"
+
+--- History request failed with server stopped (2026-11-02T22:06:59.603Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources" [active]:
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A question, if you have one.":
+    - paragraph: OPTIONAL INFORMATION
+    - heading "A question, if you have one." [level=1]
+    - paragraph: The model can explain the fixed exercise. You choose whether to use it.
+    - status:
+      - text: Saved answers could not be loaded. You can still ask a new question.
+      - button "Retry history"
+    - generic: Ask about this exercise
+    - textbox "Ask about this exercise":
+      - /placeholder: "Fictional scenario: Sam asks how long the exercise takes."
+      - text: "Fictional scenario: Alex asks what the pacing cues mean."
+    - paragraph: Use fictional questions only. Questions go to Google Gemini and are saved with replies on this computer.
+    - button "Ask question":
+      - text: Ask question
+      - generic: →
+    - paragraph: Demonstration mode · fail · no live model call
+    - article:
+      - paragraph: Mock reply · demonstration only
+      - paragraph: Saved answer · Nov 2, 2026, 5:00 PM
+      - 'heading "Fictional scenario: Sam asks how long the exercise takes and whether stopping early is allowed." [level=2]'
+      - paragraph: The exercise repeats a 4-second inhale and a 6-second exhale six times, for 60 seconds. You can stop whenever you choose.
+    - paragraph: This prototype provides no diagnosis, therapy, or clinical monitoring.
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.
+
+--- Clean checkout fresh environment mock question result (2026-11-02T22:10:26.301Z) ---
+- banner:
+  - link "A moment to breathe, home":
+    - /url: /
+    - generic: ◌
+    - text: a moment to breathe
+  - button "Crisis resources":
+    - generic: ＋
+    - text: Crisis resources
+- main:
+  - generic: Coursework prototype · fictional use only
+  - navigation "Main":
+    - button "Breathe"
+    - button "Ask about this exercise"
+    - button "History"
+  - region "A question, if you have one.":
+    - paragraph: OPTIONAL INFORMATION
+    - heading "A question, if you have one." [level=1]
+    - paragraph: The model can explain the fixed exercise. You choose whether to use it.
+    - paragraph: SAVED ON THIS COMPUTER
+    - paragraph: You can revisit your latest answer or ask something new below.
+    - button "Reopen my last answer"
+    - paragraph: Shows a saved reply without a new model request.
+    - generic: Ask about this exercise
+    - textbox "Ask about this exercise":
+      - /placeholder: "Fictional scenario: Sam asks how long the exercise takes."
+      - text: "Fictional scenario: Sam asks how long the exercise takes."
+    - paragraph: Use fictional questions only. Questions go to Google Gemini and are saved with replies on this computer.
+    - button "Ask question":
+      - text: Ask question
+      - generic: →
+    - paragraph: Demonstration mode · mock · no live model call
+    - article:
+      - paragraph: Mock reply · demonstration only
+      - paragraph: The exercise repeats a 4-second inhale and a 6-second exhale six times, for 60 seconds. You can stop whenever you choose.
+    - paragraph: This prototype provides no diagnosis, therapy, or clinical monitoring.
+- contentinfo:
+  - generic: A coursework skills prototype.
+  - generic: No diagnosis, therapy, or monitoring. Test with fictional scenarios only.

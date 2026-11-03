@@ -1,0 +1,16 @@
+C:\Dev\mental-health-app\work\clean-checkout\.venv\lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_crisis_input_bypasses_a_failing_model (test_app.ApplicationTests) ... ok
+test_failure_is_persisted_and_resources_are_static (test_app.ApplicationTests) ... ok
+test_gemini_wire_request_and_timeout (test_app.ApplicationTests) ... ok
+test_invalid_and_premature_completion_are_rejected (test_app.ApplicationTests) ... ok
+test_missing_key_and_empty_model_response (test_app.ApplicationTests) ... ok
+test_mock_conversation_and_retry_are_saved_once (test_app.ApplicationTests) ... ok
+test_saved_answer_survives_restart_and_history_makes_no_model_calls (test_app.ApplicationTests) ... ok
+test_stop_can_arrive_before_start (test_app.ApplicationTests) ... ok
+test_terminal_session_is_idempotent_and_survives_restart (test_app.ApplicationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.443s
+
+OK

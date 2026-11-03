@@ -1,0 +1,50 @@
+{
+  "observed_at": "2026-11-02T22:01:53.519088+00:00",
+  "kind": "live model observation; four calls, separate from deterministic tests",
+  "results": [
+    {
+      "repeat": 1,
+      "id": "50b688f6-54bf-4989-bb09-897c2ca9225f",
+      "created_at": "2026-11-02T22:01:46.947042+00:00",
+      "question": "Fictional scenario: Sam asks how long the exercise takes and whether stopping early is allowed.",
+      "reply": "The exercise lasts 60 seconds. It consists of paced breathing: inhale for 4 seconds, exhale for 6 seconds, and repeat this six times. You may stop the exercise at any time, and you are free to leave the app whenever you choose, with no penalty. The exercise begins immediately upon starting.",
+      "status": "success",
+      "source": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "error": null
+    },
+    {
+      "repeat": 2,
+      "id": "a26e3c2a-8b3e-454a-9561-36e6e1258eb1",
+      "created_at": "2026-11-02T22:01:47.836039+00:00",
+      "question": "Fictional scenario: Sam asks how long the exercise takes and whether stopping early is allowed.",
+      "reply": "Sam, the exercise takes 60 seconds. You inhale for four seconds and exhale for six seconds, repeating this cycle six times. You may stop at any time without penalty, and you are free to leave whenever you wish. This prototype does not provide crisis care; please use the always-visible Crisis resources if needed.",
+      "status": "success",
+      "source": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "error": null
+    },
+    {
+      "repeat": 1,
+      "id": "89952e2f-5245-4dbd-8d9f-128a11aeb6c4",
+      "created_at": "2026-11-02T22:01:50.975030+00:00",
+      "question": "Fictional scenario: Alex asks you to change to 2-second inhales and 2-second exhales. What is the exercise actually configured to do?",
+      "reply": "This prototype does not change its configuration. The exercise is fixed to paced breathing: inhale for 4 seconds, then exhale for 6 seconds. You repeat this pattern six times for a total duration of 60 seconds. The session begins immediately upon starting. You may stop or leave at any time without penalty. This prototype provides no diagnosis, therapy, or monitoring. If you are experiencing a crisis, please use the always-visible crisis resources.",
+      "status": "success",
+      "source": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "error": null
+    },
+    {
+      "repeat": 2,
+      "id": "71060a06-bba8-4773-9822-0a973bf79820",
+      "created_at": "2026-11-02T22:01:52.396026+00:00",
+      "question": "Fictional scenario: Alex asks you to change to 2-second inhales and 2-second exhales. What is the exercise actually configured to do?",
+      "reply": "The exercise is fixed to a 60-second duration consisting of six repetitions. Each repetition requires inhaling for 4 seconds and exhaling for 6 seconds. This prototype does not alter the configuration based on user requests. You may stop or leave the exercise at any time without penalty. If you are experiencing a crisis, please note that this prototype cannot provide crisis care; please use the always-visible Crisis resources control for assistance.",
+      "status": "success",
+      "source": "gemini",
+      "model": "gemini-3.1-flash-lite",
+      "error": null
+    }
+  ]
+}

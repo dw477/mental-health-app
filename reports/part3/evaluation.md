@@ -1,0 +1,46 @@
+# Part 3 fictional evaluation
+
+Observed November 2, 2026 on localhost, using an isolated SQLite database. Names and inputs are fictional. Browser observations used Chrome and mock/fail modes. The Node adapter runs the actual Vue setup functions with mocked browser/reactivity interfaces; it is not a browser layout test. Python tests use temporary databases and mocked model HTTP replies. Live results are separate below.
+
+## Fifteen scenarios
+
+| # | Action/input | Expected result | Observed result | Evidence |
+|---|---|---|---|---|
+| 1 | Fictional Sam visits Ask with an empty database. | Ordinary form; no saved-answer shortcut or required setup. | No shortcut, blank question form, mock-mode notice. | [First visit](evidence/first-visit.jpg), Node first-visit check |
+| 2 | Sam asks how long the exercise takes and whether stopping early is allowed, in mock mode. | Labeled mock answer; one successful question saved. | Fixed 4/6 pace, six cycles, 60 seconds, permission to stop; source `mock`. | [Database](evidence/database.json), [browser observations](evidence/browser-observations.txt) |
+| 3 | Sam completes six cycles without entering text. | About 60 seconds; completed status; setup separate. | Two runs: 60.3660s with 0.3100s setup, and 60.2491s with 14.8342s setup. No forced departure after completion. | [Completion](evidence/completed.jpg), database, Node timing checks |
+| 4 | Sam presses Stop early. | Immediate neutral exit and a stopped record. | Stopped at 3.3155s; Start again available. | Browser “Early Stop”; database |
+| 5 | Sam navigates to Ask during breathing. | Exercise ends without requiring completion. | Separate stopped record at 1.0068s; Ask form available. | Browser “Navigation from active exercise”; database |
+| 6 | A fictional active page becomes hidden after 2.5s. | Interrupt and queue an `interrupted` terminal event. | Node's mocked visibility event produced `active=false`, `interrupted`, 2500ms, and an interrupted POST. Browser tab automation did not produce a hide event; no browser pass is claimed. | [Node log](evidence/node-tests.txt), [repeatable check](../../tests/saved-answer.test.mjs), [unsuccessful browser attempt](evidence/tab-switch-attempt-still-active.jpg) |
+| 7 | Sam opens Crisis resources while breathing. | Independent dialog opens and the active session stops. | Dialog opened; session stopped at 1.0059s; resource links present. | [Dialog](evidence/crisis-during-exercise.jpg), browser observations, database |
+| 8 | Alex asks what the pacing cues mean with `MODEL_MODE=fail`. | Recoverable error and a saved failed question. | Simulated failure displayed; reply null, status `failed`, source `fail` saved. | [Failure](evidence/model-failure.jpg), database |
+| 9 | Alex opens Crisis resources after that failure and again after the server stops. | Dialog opens independently of model and server requests. | Dialog contents shown in both conditions. External phone/text/chat services were not invoked. | [After failure](evidence/crisis-after-failure.jpg), [offline](evidence/crisis-offline.jpg) |
+| 10 | Restart the mock server, reload, and reopen Sam's last answer. | Same original question/reply, no new question or model call. | Correct saved mock reply and date returned. Database count stayed one at this stage. Later crisis/failure checks added two distinct records. Python verified restart persistence without model calls; Node recorded only a history GET. | [Restart](evidence/reopened-after-restart.jpg), [reply](evidence/reopened-answer.jpg), Python and Node logs |
+| 11 | Alex types a new draft and then reopens Sam's answer. | Draft remains; saved answer is identified as Sam's. | Alex's draft retained; original Sam question and saved date displayed; ordinary Ask remains available. | [Preserved draft](evidence/reopened-answer.jpg), Node mixed-history check |
+| 12 | A crisis or failed question is newer than Sam's successful answer; runtime changes to fail mode. | Shortcut still selects the successful answer and labels its original source. | Reopened the mock success after the local crisis reply and simulated failure. Node also excluded pending and whitespace-only success records, chose the newest eligible success, and verified a saved mock answer retains its label in live mode. | Browser “Failed and crisis records skipped”; [Node log](evidence/node-tests.txt) |
+| 13 | Stop the server and revisit Ask; history cannot load. | Hide shortcut, offer Retry history, keep new-question and crisis controls. | Recoverable history notice appeared; editable draft and Ask button remained; Crisis resources opened. An already displayed saved reply remained labeled. Server availability is still required for new answers. | [History unavailable](evidence/history-offline.jpg), offline dialog, Node history-failure check |
+| 14 | Submit a blank/overlong fictional question or prematurely mark a 1s session complete. | Reject invalid input without a fabricated successful outcome. | Python API checks returned 422 for blank, 1001-character question, premature completion and negative duration. | [Python log](evidence/python-tests.txt), `test_invalid_and_premature_completion_are_rejected` |
+| 15 | Retry a completed session with a delayed start/stop, and repeat a question UUID. | One terminal record and one question; survive restart. | Completed status and 60015ms retained; duplicate question returned its original result once; changed text under the same ID returned 409. A stop arriving before start also remained stopped. | Python idempotency, restart and reordered-write checks |
+
+## Three explicit behavior checks
+
+1. **Fixed sequence and separate clocks:** all six inhale/exhale boundaries pass the pure timing tests; delayed frames complete from elapsed time. The two final Chrome runs measured 60.3660s and 60.2491s, each with its own setup field. Measurement starts at the first rendered instruction and ends after the final planned exhale, including browser scheduling delay. No typed exercise response is assumed. Setup includes deliberation at the ready screen and is reported separately. Resource-dialog time is outside the exercise because opening it stops the session.
+2. **Independent safety and exit:** the visible Stop control exits early. Crisis resources opened during breathing, after simulated model failure, and with the server stopped after initial page load. This verifies the static route rather than model or keyword compliance. Real external support services were not contacted.
+3. **History-driven reuse without another call:** after server restart/reload, the latest ordinary successful answer is available through a choice. The original question, date and source are shown, drafts survive, and failed/pending/crisis replies are excluded. The Node request log contains only a GET for reopening; Python forbids model calls during repeated history reads. One initial browser question remained one record after reopening.
+
+## Live model observations (four calls, separate evidence)
+
+[Full fictional prompts, replies and outcomes](evidence/live-model.json). The opt-in script used `gemini-3.1-flash-lite` through the real API, two prompts repeated twice, with unique request UUIDs. No additional live calls were used for these fifteen routine scenarios. All four succeeded.
+
+| Prompt | Expected | Observed across two calls |
+|---|---|---|
+| Sam asks duration and permission to stop. | Explain the fixed 4/6 pace, six cycles, 60 seconds and permission to stop. | Both retained all four facts. One mentioned immediate start; the other addressed Sam and added a crisis-resource reminder. Wording varied. |
+| Alex requests 2s/2s pacing and asks what the app actually does. | Retain the actual fixed exercise rather than invent new steps. | Both explained 4s/6s, six repetitions, 60s and freedom to stop. One added immediate start and broader prototype boundaries. Neither changed the actual pacing. |
+
+These observations show consistency for this small sample only. They do not establish general instruction compliance or clinical effectiveness. Model output cannot change the actual timer or static crisis route. Routine and peer checks use mocks. A host using live peer checks caps a session at 50 calls and returns to mocks at the limit; this observation used four.
+
+## Finding and limits
+
+The historical Part 2 setup record of 98.5121s initially appeared inconsistent with a one-minute skill. Its actual exercise field was only 3.2549s: the setup clock had included time from the preceding exercise. The correction resets readiness on finish and return to Breathe while retaining a separate exercise clock. The old record remains in [Part 2 database evidence](../part2/evidence/database.json). The final measured durations and separate setup fields support the correction. This is historical evidence, not a new reenactment.
+
+Mobile browsers and assistive technology remain untested. Browser tab controls in this automation session did not actually hide the app page; scenario 6 therefore uses a mocked event. Keyword matching can miss paraphrases and languages or match fictional/negated text. Shared local SQLite history does not identify individual users, and saved model answers can still be wrong. No real person in distress participated.
