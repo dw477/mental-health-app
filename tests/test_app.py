@@ -85,6 +85,15 @@ class ApplicationTests(unittest.TestCase):
         self.assertIn("Crisis resources", self.client.get("/").text)
         self.assertIn("988lifeline.org", self.client.get("/").text)
 
+    def test_saved_answer_survives_restart_and_history_makes_no_model_calls(self):
+        saved = self.question("Fictional scenario: Sam asks about the exercise duration.").json()
+        self.client.__exit__(None, None, None)
+        self.client.__enter__()
+        with patch("backend.app.model_reply", side_effect=AssertionError("History must not call the model")):
+            for _ in range(2):
+                records = self.client.get("/api/history").json()["conversations"]
+                self.assertEqual(records, [saved])
+
     def test_crisis_input_bypasses_a_failing_model(self):
         with patch.dict(os.environ, {"MODEL_MODE": "fail"}):
             result = self.question("Fictional scenario: Sam says I want to hurt myself.").json()

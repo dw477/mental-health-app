@@ -16,6 +16,8 @@ createApp({
     const question = ref('');
     const sending = ref(false);
     const answer = ref(null);
+    const lastAnswer = ref(null);
+    const reopened = ref(false);
     const questionError = ref('');
     const resources = ref(null);
     const resourceReturnFocus = ref(null);
@@ -27,7 +29,7 @@ createApp({
     const pendingKey = 'breathing-session-outbox-v1';
     let pendingSessions = readPending();
     const cue = computed(() => skill.value ? cueAt(elapsed.value, skill.value) : null);
-    const modeLabel = computed(() => config.value?.model_mode === 'mock' ? 'Mock reply · demonstration only' : 'Google Gemini');
+    const modeLabel = computed(() => answer.value?.source === 'mock' ? 'Mock reply · demonstration only' : 'Google Gemini');
 
     async function request(url, options = {}) {
       const response = await fetch(url, { ...options, signal: AbortSignal.timeout(25000) });
@@ -108,15 +110,28 @@ createApp({
 
     async function loadHistory() {
       historyError.value = '';
-      try { history.value = await request('/api/history'); }
+      lastAnswer.value = null;
+      try {
+        history.value = await request('/api/history');
+        // History is newest first. Failed, pending and crisis records are not reusable answers.
+        lastAnswer.value = history.value.conversations.find(record =>
+          record.status === 'success' && record.reply?.trim()) || null;
+      }
       catch { historyError.value = 'History could not be loaded. You can try again.'; }
+    }
+
+    function reopenLastAnswer() {
+      if (!lastAnswer.value || sending.value) return;
+      answer.value = { ...lastAnswer.value };
+      reopened.value = true;
+      questionError.value = '';
     }
 
     async function navigate(destination) {
       if (active.value) finish('stopped');
       if (destination === 'breathe' && screen.value !== 'breathe') readyAt.value = performance.now();
       screen.value = destination;
-      if (destination === 'history') await loadHistory();
+      if (destination === 'history' || destination === 'ask') await loadHistory();
     }
 
     function openResources(event) {
@@ -135,11 +150,13 @@ createApp({
       sending.value = true;
       questionError.value = '';
       answer.value = null;
+      reopened.value = false;
       try {
         answer.value = await request('/api/questions', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id: crypto.randomUUID(), question: question.value.trim() }),
         });
+        if (answer.value.status === 'success' && answer.value.reply?.trim()) lastAnswer.value = { ...answer.value };
       } catch {
         questionError.value = 'The reply could not be loaded. Please try again later. The exercise and Crisis resources are available.';
       } finally { sending.value = false; }
@@ -179,9 +196,9 @@ createApp({
 
     return {
       skill, config, screen, active, elapsed, outcome, cue, loadError, saveError,
-      historyError, history, question, sending, answer, questionError, resources,
+      historyError, history, question, sending, answer, lastAnswer, reopened, questionError, resources,
       modeLabel, start, finish, navigate, openResources, closeResources, ask,
-      initialize, flushSessions, loadHistory, formatDate,
+      initialize, flushSessions, loadHistory, reopenLastAnswer, formatDate,
     };
   },
 }).mount('#app');

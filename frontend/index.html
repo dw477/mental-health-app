@@ -50,6 +50,13 @@
       <section v-if="screen === 'ask'" class="secondary-view" aria-labelledby="ask-heading">
         <p class="eyebrow">OPTIONAL INFORMATION</p><h1 id="ask-heading">A question, if you have one.</h1>
         <p>The model can explain the fixed exercise. You choose whether to use it.</p>
+        <div v-if="lastAnswer" class="panel">
+          <p class="eyebrow">SAVED ON THIS COMPUTER</p>
+          <p>You can revisit your latest answer or ask something new below.</p>
+          <button class="subtle-button" :disabled="sending" @click="reopenLastAnswer">Reopen my last answer</button>
+          <p class="small-text">Shows a saved reply without a new model request.</p>
+        </div>
+        <div v-if="historyError" class="notice" role="status">Saved answers could not be loaded. You can still ask a new question. <button class="text-button" @click="loadHistory">Retry history</button></div>
         <form class="panel question-form" @submit.prevent="ask">
           <label for="question">Ask about this exercise</label>
           <textarea id="question" v-model="question" required maxlength="1000" rows="4" placeholder="Fictional scenario: Sam asks how long the exercise takes." :disabled="sending" aria-describedby="question-privacy"></textarea>
@@ -59,7 +66,7 @@
         </form>
         <div v-if="sending" role="status" class="notice">You can open Crisis resources or return to the exercise while you wait.</div>
         <div v-if="questionError || answer?.status === 'failed'" class="notice error" role="alert">{{ questionError || answer.error }} <p>The breathing exercise and Crisis resources are still available.</p></div>
-        <article v-if="answer?.reply" class="panel answer" aria-live="polite"><p class="eyebrow">{{ answer.status === 'crisis' ? 'LOCAL SAFETY RESPONSE' : modeLabel }}</p><p>{{ answer.reply }}</p><button v-if="answer.status === 'crisis'" class="text-button" @click="openResources">Open Crisis resources</button></article>
+        <article v-if="answer?.reply" class="panel answer" aria-live="polite"><p class="eyebrow">{{ answer.status === 'crisis' ? 'LOCAL SAFETY RESPONSE' : modeLabel }}</p><template v-if="reopened"><p class="small-text">Saved answer · {{ formatDate(answer.created_at) }}</p><h2>{{ answer.question }}</h2></template><p>{{ answer.reply }}</p><button v-if="answer.status === 'crisis'" class="text-button" @click="openResources">Open Crisis resources</button></article>
         <p class="small-text">This prototype provides no diagnosis, therapy, or clinical monitoring.</p>
       </section>
 
